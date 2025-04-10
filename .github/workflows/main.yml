@@ -1,0 +1,89 @@
+name: Deploy Vite App to GitHub Pages
+
+
+
+
+on:
+
+  push:
+
+    branches:
+
+      - main  # Change to "master" if your branch is named "master"
+
+
+
+
+permissions:
+
+  contents: write
+
+
+
+
+jobs:
+
+  deploy:
+
+    runs-on: ubuntu-latest
+
+
+
+
+    steps:
+
+      - name: Checkout Repository
+
+        uses: actions/checkout@v4
+
+
+
+
+      - name: Setup Node.js
+
+        uses: actions/setup-node@v4
+
+        with:
+
+          node-version: '20'
+
+          cache: 'npm'
+
+
+
+
+      - name: Install Dependencies
+
+        run: npm install --force
+
+
+
+
+      - name: Build Vite App
+
+        run: npm run build  # This will generate the "dist/" directory
+
+
+
+
+      - name: Debug Build Directory
+
+        run: |
+
+          echo "Checking directory structure..."
+
+          ls -la
+
+          ls -la dist || echo "⚠️ Dist directory does not exist!"
+
+
+
+      - name: Deploy to GitHub Pages
+
+        uses: JamesIves/github-pages-deploy-action@v4
+
+        with:
+
+          branch: gh-pages
+
+          folder: dist  # Make sure "dist/" is used instead of "build/"
