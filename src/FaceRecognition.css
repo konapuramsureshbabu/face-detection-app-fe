@@ -1,0 +1,485 @@
+/* Full page background with animated gradient */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  @keyframes gradientBG {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Main container with glass morphism effect */
+  .face-recognition-container {
+    text-align: center;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Floating orb decorations */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.7;
+    z-index: 0;
+  }
+  
+  .orb-1 {
+    width: 300px;
+    height: 300px;
+    background: #ff9a9e;
+    top: 10%;
+    left: 10%;
+    animation: float 18s infinite alternate ease-in-out;
+  }
+  
+  .orb-2 {
+    width: 400px;
+    height: 400px;
+    background: #a1c4fd;
+    bottom: 10%;
+    right: 10%;
+    animation: float 15s infinite alternate-reverse ease-in-out;
+    animation-delay: 3s;
+  }
+  
+  .orb-3 {
+    width: 200px;
+    height: 200px;
+    background: #fbc2eb;
+    top: 50%;
+    left: 30%;
+    animation: float 12s infinite alternate ease-in-out;
+    animation-delay: 6s;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+      transform: translate(50px, 80px) rotate(120deg);
+    }
+    66% {
+      transform: translate(-30px, 60px) rotate(240deg);
+    }
+    100% {
+      transform: translate(-50px, -50px) rotate(360deg);
+    }
+  }
+  
+  /* Card styles with glass effect */
+  .face-recognition-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    padding: 3rem;
+    max-width: 800px;
+    width: 90%;
+    margin: 2rem auto;
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 0.7s ease-out;
+    transition: all 0.3s ease;
+  }
+  
+  .face-recognition-card:hover {
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+  }
+  
+  /* Title with gradient text */
+  .face-recognition-title {
+    background: linear-gradient(45deg, #fff, #c3cfe2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 0.5s ease-out;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  /* Modern input fields */
+  .face-recognition-input {
+    padding: 1rem;
+    margin: 0.8rem;
+    border: none;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 350px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid transparent;
+  }
+  
+  .face-recognition-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+    border-left: 4px solid #3498db;
+    background: rgba(255, 255, 255, 0.95);
+  }
+  
+  /* Enhanced button styles */
+  .face-recognition-button {
+    color: rgb(41, 40, 40);
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0.8rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    min-width: 200px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  
+  .face-recognition-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 25%, rgba(255, 255, 255, 0.4) 50%, transparent 75%);
+    background-size: 400% 400%;
+    z-index: -1;
+    transition: all 0.5s;
+    opacity: 0;
+  }
+  
+  .face-recognition-button:hover::before {
+    opacity: 1;
+    animation: shine 1.5s infinite;
+  }
+  
+  .face-recognition-button.primary {
+    background: linear-gradient(45deg, #3498db, #5d6df0);
+  }
+  
+  .face-recognition-button.secondary {
+    background: linear-gradient(45deg, #2ecc71, #00d2b4);
+  }
+  
+  .face-recognition-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .face-recognition-button:active {
+    transform: translateY(1px);
+  }
+  
+  .face-recognition-button:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+  
+  .face-recognition-button svg {
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+  
+  /* Webcam container with neon glow */
+  .webcam-container {
+    position: relative;
+    width: 340px;
+    height: 260px;
+    margin: 1.5rem auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    transition: all 0.3s;
+  }
+  
+  .webcam-container:hover {
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+  }
+  
+  .canvas-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+  
+  /* Animated messages */
+  .face-recognition-message {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-radius: 12px;
+    animation: fadeIn 0.4s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.3s;
+  }
+  
+  .face-recognition-message.error {
+    background: rgba(231, 76, 60, 0.2);
+    color: #fff;
+    border-left: 4px solid #e74c3c;
+  }
+  
+  .face-recognition-message.success {
+    background: rgba(46, 204, 113, 0.2);
+    color: #fff;
+    border-left: 4px solid #2ecc71;
+  }
+  
+  .message-icon {
+    margin-right: 10px;
+    font-size: 1.3rem;
+  }
+  
+  /* Pulsing face count */
+  .face-count {
+    background: linear-gradient(45deg, #9b59b6, #3498db);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    display: inline-block;
+    margin: 1.5rem 0;
+    animation: pulse 1.5s infinite;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(155, 89, 182, 0.4);
+  }
+  
+  /* Reference image with floating effect */
+  .reference-image-preview {
+    margin: 1.5rem auto;
+    width: 180px;
+    height: 135px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: 3px solid #2ecc71;
+    position: relative;
+    transform: perspective(500px) rotateY(0deg);
+    transition: all 0.5s ease;
+    animation: floatImage 6s ease-in-out infinite;
+  }
+  
+  .reference-image-preview:hover {
+    transform: perspective(500px) rotateY(10deg) scale(1.05);
+    animation-play-state: paused;
+  }
+  
+  @keyframes floatImage {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+  
+  .reference-image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .reference-image-preview::after {
+    content: '✓';
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: #2ecc71;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 3px 10px rgba(46, 204, 113, 0.5);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 5px 15px rgba(155, 89, 182, 0.4);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(155, 89, 182, 0.6);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 5px 15px rgba(155, 89, 182, 0.4);
+    }
+  }
+  
+  /* Special attendance button with glow */
+  .mark-attendance {
+    background: linear-gradient(45deg, #e74c3c, #e67e22);
+    margin-top: 1.5rem;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .mark-attendance::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0) 45%,
+      rgba(255, 255, 255, 0.8) 50%,
+      rgba(255, 255, 255, 0) 55%
+    );
+    transform: rotate(30deg);
+    animation: buttonGlow 3s infinite;
+  }
+  
+  @keyframes buttonGlow {
+    0% {
+      transform: rotate(30deg) translate(-30%, -30%);
+    }
+    100% {
+      transform: rotate(30deg) translate(30%, 30%);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .face-recognition-card {
+      padding: 2rem 1.5rem;
+      width: 95%;
+    }
+    
+    .face-recognition-title {
+      font-size: 2.2rem;
+    }
+    
+    .webcam-container {
+      width: 300px;
+      height: 225px;
+    }
+    
+    .orb-1, .orb-2, .orb-3 {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .face-recognition-card {
+      padding: 1.5rem 1rem;
+    }
+    
+    .face-recognition-title {
+      font-size: 1.8rem;
+    }
+    
+    .face-recognition-button {
+      padding: 0.8rem 1.2rem;
+      min-width: 160px;
+      font-size: 1rem;
+      
+    }
+    
+    .webcam-container {
+      width: 260px;
+      height: 195px;
+    }
+  }
+
+
+/* Snow Flower / Sakura Petal Falling Animation */
+.snow-flower {
+    position: fixed;
+    top: -10%;
+    z-index: 0;
+    color: rgba(255, 255, 255, 0.7);
+    user-select: none;
+    pointer-events: none;
+    animation: falling linear infinite;
+  }
+  
+  @keyframes falling {
+    0% {
+      transform: translate3d(var(--left-ini), 0, 0) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate3d(var(--left-end), 110vh, 0) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  /* Add this to your existing media queries to disable on mobile */
+  @media (max-width: 768px) {
+    .snow-flower {
+      display: none;
+    }
+  }  
